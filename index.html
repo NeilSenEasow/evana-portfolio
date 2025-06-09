@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1' name='viewport' />
+    <title>Evana Ann Benny</title>
+
+    <!-- Meta Tags for SEO and Social Sharing -->
+    <meta name="description" content="The portfolio of John Doe, a professional web developer and designer." />
+    <meta name="keywords" content="portfolio, web developer, designer, john doe, freelancer" />
+    <meta property="og:title" content="John Doe - Portfolio" />
+    <meta property="og:description" content="Check out my work and get in touch!" />
+    <meta property="og:image" content="img/hero-background.jpg" />
+    <meta property="og:url" content="https://your-website.com" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Google Fonts & Icon Fonts -->
+    <link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css' rel='stylesheet' />
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script%7CPoppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i' rel='stylesheet' />
+    <link href='https://cdn.linearicons.com/free/1.0.0/icon-font.min.css' rel='stylesheet' />
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+        /* Hamburger styles */
+        .hamburger {
+            width: 30px;
+            height: 24px;
+            position: absolute;
+            top: 50%;
+            right: 30px;
+            transform: translateY(-50%); /* Adjusted for better vertical centering */
+            display: inline-block;
+            cursor: pointer;
+            z-index: 1101;
+        }
+        .hamburger span {
+            display: block;
+            height: 4px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 2px;
+            margin-bottom: 6px;
+            transition: 0.3s, background 0.3s;
+        }
+        .hamburger span:last-child {
+            margin-bottom: 0;
+        }
+        /* Invert hamburger color when overlay menu is open */
+        .overlay-menu.open ~ .hamburger span,
+        body.menu-open .hamburger span {
+            background: #222 !important;
+        }
+        /* Overlay menu styles */
+        .overlay-menu {
+            position: fixed;
+            top: 0;
+            right: -100vw;
+            width: 100vw;
+            height: 100vh;
+            background: #fffcfc;
+            z-index: 1100;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            transition: right 0.4s cubic-bezier(.77,0,.175,1);
+            box-shadow: -2px 0 20px rgba(0,0,0,0.08);
+        }
+        .overlay-menu.open {
+            right: 0;
+        }
+        .overlay-menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: left;
+            width: 100%;
+            margin-top: 10vh;
+            margin-left: 8vw;
+        }
+        .overlay-menu ul li {
+            margin: 30px 0;
+        }
+        .overlay-menu ul li a {
+            font-size: 2rem;
+            color: #222;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+            text-align: left;
+            display: block;
+        }
+        .overlay-menu ul li a:hover {
+            color: #007bff;
+        }
+        /* Hide original nav */
+        .top-menu {
+            display: none !important;
+        }
+        /* Responsive: always show hamburger */
+        @media (min-width: 0px) {
+            .hamburger {
+                display: inline-block;
+            }
+        }
+        /* Prevent scroll when menu open */
+        body.menu-open {
+            overflow: hidden;
+        }
+
+        /* --- START: Added styles for new header behavior --- */
+
+        /* Header scroll behavior styles */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000; /* Below overlay menu (1100) but above content */
+            transition: transform 0.4s ease-out, background-color 0.4s ease-out, box-shadow 0.4s ease-out, padding 0.4s ease-out;
+            padding: 30px 0; /* Add initial padding for better spacing */
+            background-color: transparent;
+        }
+
+        /* Scrolled state for the header */
+        .header.scrolled {
+            background-color: #ffffff;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            padding: 20px 0; /* Reduce padding on scroll */
+        }
+
+        /* By default, logo link is white for the hero section */
+        .header .logo h1 a {
+            color: #ffffff;
+            transition: color 0.4s ease-out;
+        }
+
+        /* When scrolled, change logo and hamburger color to be visible on white background */
+        .header.scrolled .logo h1 a {
+            color: #222222;
+        }
+
+        .header.scrolled .hamburger span {
+            background: #222222;
+        }
+
+        /* --- END: Added styles for new header behavior --- */
+    </style>
+</head>
+
+<body>
+    <div class='page'>
+        <!-- Preloader -->
+        <div class='preloader'>
+            <div class='centrize full-width'>
+                <div class='vertical-center'>
+                    <div class='spinner'>
+                        <div class='double-bounce1'></div>
+                        <div class='double-bounce2'></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Header -->
+        <header class='header'>
+            <div class='fw'>
+                <div class='logo'>
+                     <!-- YOUR LOGO/NAME HERE -->
+                    <h1><a href="#">Evana Ann Benny</a></h1>
+                </div>
+                <!-- Hamburger Menu Button -->
+                <div class="hamburger" id="hamburger-menu" aria-label="Open navigation" tabindex="0">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <!-- Fullscreen Overlay Menu -->
+                <nav class="overlay-menu" id="overlay-menu" aria-label="Main navigation">
+                    <ul style="margin: 40px 0 0 40px; padding: 0; list-style: none;" class="mt-12">
+                        <li>
+                            <a href="#blog-section" onclick="closeMenu()" class="huge-outline-link">Hello!</a>
+                        </li>
+                        <li>
+                            <a href="#books-section" onclick="closeMenu()" class="huge-outline-link">My Works</a>
+                        </li>
+                        <li>
+                            <a href="#gallery-section" onclick="closeMenu()" class="huge-outline-link">Gallery</a>
+                        </li>
+                        <li>
+                            <a href="#hello-section" onclick="closeMenu()" class="huge-outline-link last-section-link">Hello!</a>
+                        </li>
+                    </ul>
+                </nav>
+                <style>
+                    /* Overlay menu list layout */
+                    .overlay-menu {
+                        /* margin-top: 10px; */
+                        display: flex;
+                        align-items: flex-start;
+                        justify-content: flex-start;
+                        margin-left: 120px; /* Move items more to the right */
+                        width: 100vw;
+                    }
+                    .overlay-menu ul {
+                        row-gap: -100vw; /* Reduce line space between items */
+                        /* margin-top: 10px; */
+                        padding-top: 10px;
+                    }
+                    .overlay-menu ul {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: flex-start;
+                        justify-content: flex-start;
+                        /* height: 100vh; */
+                        margin: 100px;
+                        padding: 8vw 0 0 4vw; /* Top and left padding to move items to the left side */
+                        /* gap: 2vw; */
+                    }
+                    /* Large outlined nav links in overlay */
+                    .overlay-menu .huge-outline-link {
+                        font-family: 'Montserrat', 'Arial Black', Arial, sans-serif;
+                        font-size: 13vw;
+                        font-weight: 900;
+                        color: transparent;
+                        -webkit-text-stroke: 2.5px #222;
+                        text-stroke: 2.5px #222;
+                        text-decoration: none;
+                        display: inline-block;
+                        transition: color 0.2s, -webkit-text-stroke-color 0.2s, text-stroke-color 0.2s;
+                        line-height: 0.5;
+                        letter-spacing: -0.04em;
+                        text-align: left;
+                    }
+                    .overlay-menu .huge-outline-link:hover,
+                    .overlay-menu .huge-outline-link:focus {
+                        color: #111;
+                        -webkit-text-stroke: 2.5px #fff4f4;
+                        text-stroke: 2.5px #111;
+                    }
+                    @media (max-width: 600px) {
+                        .huge-outline-link {
+                            font-size: 18vw;
+                        }
+                        .overlay-menu ul {
+                            gap: 3vw;
+                            padding: 8vw 0 0 2vw; /* Less left padding for mobile, still left-aligned */
+                        }
+                    }
+                </style>
+            </div>
+        </header>
+
+        <!-- Container -->
+        <div class='container'>
+
+            <!-- Hero Section (Started) -->
+            <div class='section started' id="home-section">
+                <!-- Set your background image in style.css for .section.started .slide -->
+                <div class='slide'></div>
+                <div id='particles-bg'></div>
+                <div class='centrize full-width'>
+                    <div class='vertical-center'>
+                        <div class='st-title align-center'>
+                            <div class='typing-title'>
+                                <!-- Text for the typing effect -->
+                                <p>Writer</p>
+                                <p>Thinker</p>
+                                <p>Storyteller</p>
+                                <p>Creator</p>
+                            </div>
+                            <span class='typed-title'></span>
+                        </div>
+                        <!-- Social Links -->
+                        <div class='socials'>
+                            <a href='#' target='_blank'><i class='icon fa fa-facebook'></i></a>
+                            <a href='#' target='_blank'><i class='icon fa fa-github'></i></a>
+                            <a href='#' target='_blank'><i class='icon fa fa-twitter'></i></a>
+                            <a href='#' target='_blank'><i class='icon fa fa-youtube'></i></a>
+                            <a href='#' target='_blank'><i class='icon fa fa-google-plus'></i></a>
+                        </div>
+                    </div>
+                </div>
+                <a href="#about-section" class='mouse-btn'><i class='icon lnr lnr-chevron-down'></i></a>
+            </div>
+
+            <!-- About Section -->
+            <div class='section about align-left' id='about-section' style="padding-top:200px; padding-bottom:200px;">
+                <div class='fw'>
+                    <div class='row'>
+                        <div class='col col-m-12 col-t-4 col-d-4'>
+                            <div class='profile'>
+                                <!-- YOUR PROFILE PICTURE HERE -->
+                                <!-- <img alt='Profile Photo' src='img/profile-photo.jpg' /> -->
+                                <img alt='Profile Photo' src='https://media.licdn.com/dms/image/v2/D5603AQGC3bjIc-mkrA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1711169482918?e=2147483647&v=beta&t=Dz1-COAOd5ElRlsoRUWr60oZV4bw75Jfc1kbLKriz9E' />
+                            </div>
+                        </div>
+                        <div class='col col-m-12 col-t-8 col-d-8'>
+                            <div class='text-box'>
+                                <!-- YOUR NAME AND TAGLINE HERE -->
+                                <h1>I'm Evana Ann Benny, <br/>Creative Technologist & Storyteller.</h1>
+                                <!-- YOUR BIO HERE -->
+                                <p>
+                                    Hi, I’m Evana — a curious creative with a passion for storytelling, technology, and the wonders of the universe. With a background in Computer Science and a strong interest in agritech innovation, I enjoy exploring how AI, IoT, and data can solve real-world problems. Outside of work, I’m an avid writer with a love for essays, stories, and film reviews, some of which have even been recognized and published. I’m also deeply into sports — whether it's playing badminton and football or watching cricket, football, and MMA. I find joy in photography, character psychology, and reading about astrophysics. I thrive in collaborative spaces, love meaningful conversations, and enjoy bringing ideas to life through teamwork and creativity.
+                                </p>
+                            </div>
+                            <div class='bts'>
+                                <a class='btn extra' href='#'>Download CV</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Services Section -->
+            
+            <div class='section services gray align-left' id='services-section'>
+                <div class='fw'>
+                    <div class='titles'>
+                        <div class='title' style="font-size: 50px; word-spacing: 0.5em; line-height: 1.6em; font-family: 'Kaushan Script', helvetica, cursive; color: #292929;">
+                            What I Do
+                        </div>
+                    </div>
+                    <div class='row'>
+                        <div class='col col-m-12 col-t-6 col-d-4'>
+                            <div class='service-item'>
+                                <!-- <div class='circle'><i class='icon lnr lnr-heart'></i></div> -->
+                                <div class='name' style="font-size: 50px; word-spacing: 0.5em; line-height: 1.6em;"> 
+                                    Writing<br>works
+                                </div>
+                                <!-- <p>Crafting intuitive and beautiful user experiences is my passion.</p> -->
+                                <a class="hover-content" href="./pages/writingworks.html">
+                                    <div class="hover-name" style="font-size:x-large;">I love Writing!</div>
+                                    <div class="hover-desc">Scripts, Newpaper publications and articles and content</div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class='col col-m-12 col-t-6 col-d-4'>
+                            <div class='service-item'>
+                                <!-- <div class='circle'><i class='icon lnr lnr-magic-wand'></i></div> -->
+                                <div class='name' style="font-size: 50px; word-spacing: 0.5em; line-height: 1.6em;">
+                                    Cultural<br>works
+                                </div>
+                                <!-- <p>Building responsive and high-performance websites from the ground up.</p> -->
+                                <a class="hover-content" href="./pages/culturalworks.html">
+                                    <div class="hover-name" style="font-size:x-large;">A bit of culture</div>
+                                    <div class="hover-desc">[Placeholder: IEEE and ACM events!]</div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class='col col-m-12 col-t-6 col-d-4'>
+                            <div class='service-item'>
+                                <!-- <div class='circle'><i class='icon lnr lnr-smartphone'></i></div> -->
+                                <div class='name' style="font-size: 50px; word-spacing: 0.5em; line-height: 1.6em;">
+                                    Hobbies
+                                </div>
+                                <!-- <p>Designing and developing mobile applications for iOS and Android.</p> -->
+                                <a class="hover-content" href="./pages/hobbies.html">
+                                    <div class="hover-name" style="font-size:x-large";>What I enjoy</div>
+                                    <div class="hover-desc">[Placeholder: Painting and photography!]</div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Achievements section -->
+            <div class='achievements section-padding' id='achievements-section'>
+                <div class='fw'>
+                    <div class='titles' style="padding-top: 100px; padding-bottom: 60px;">
+                        <div class='title' style="font-size: 50px; word-spacing: 0.5em; line-height: 1.6em; font-family: 'Kaushan Script', helvetica, cursive; color: #292929;">
+                            Achievements
+                        </div>
+                        <div style="font-size: 1.3em; color: #444; margin-top: 20px;">
+                            A few highlights and recognitions from my journey so far.
+                        </div>
+                    </div>
+                    <div class='row' style="display: flex; flex-wrap: wrap; gap: 40px 0;">
+                        <div class='col col-m-12 col-t-6 col-d-4'>
+                            <div class='achievement-item' style="background: #fff8f8; border-radius: 18px; box-shadow: 0 2px 16px rgba(0,0,0,0.07); padding: 36px 28px; margin-bottom: 30px; min-height: 220px;">
+                                <!-- <div class='icon lnr lnr-trophy' style="font-size: 2.5em; color: #e6b800; margin-bottom: 18px;" aria-label="Trophy icon" title="Trophy"></div> -->
+                                <div class='icon lnr lnr-star' style="font-size: 2.5em; color: #ff7f50; margin-bottom: 18px;"></div>
+                                <div class='achievement-title' style="font-size: 1.5em; font-weight: 700; color: #292929; margin-bottom: 10px;">
+                                    Best Writer Award
+                                </div>
+                                <div class='achievement-desc' style="color: #666;">
+                                    Received the Best Writer Award at [Placeholder: University Fest 2023] for outstanding creative writing.
+                                </div>
+                            </div>
+                        </div>
+                        <div class='col col-m-12 col-t-6 col-d-4'>
+                            <div class='achievement-item' style="background: #fff8f8; border-radius: 18px; box-shadow: 0 2px 16px rgba(0,0,0,0.07); padding: 36px 28px; margin-bottom: 30px; min-height: 220px;">
+                                <div class='icon lnr lnr-star' style="font-size: 2.5em; color: #ff7f50; margin-bottom: 18px;"></div>
+                                <div class='achievement-title' style="font-size: 1.5em; font-weight: 700; color: #292929; margin-bottom: 10px;">
+                                    Cultural Event Winner
+                                </div>
+                                <div class='achievement-desc' style="color: #666;">
+                                    Led the team to victory in [Placeholder: Inter-College Dance Competition, 2022].
+                                </div>
+                            </div>
+                        </div>
+                        <div class='col col-m-12 col-t-6 col-d-4'>
+                            <div class='achievement-item' style="background: #fff8f8; border-radius: 18px; box-shadow: 0 2px 16px rgba(0,0,0,0.07); padding: 36px 28px; margin-bottom: 30px; min-height: 220px;">
+                                <div class='icon lnr lnr-camera' style="font-size: 2.5em; color: #4a90e2; margin-bottom: 18px;"></div>
+                                <div class='achievement-title' style="font-size: 1.5em; font-weight: 700; color: #292929; margin-bottom: 10px;">
+                                    Photography Exhibition
+                                </div>
+                                <div class='achievement-desc' style="color: #666;">
+                                    Showcased artwork at [Placeholder: City Art Gallery, 2021] as part of a group exhibition.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Conclusion section -->
+            <div class='work section-padding' id='works-section'>
+                 <div class='fw'>
+                    <div class='titles' style="padding-top: 100px; padding-bottom: 100px;">
+						<div class='title' style="font-size: 50px; word-spacing: 0.5em; line-height: 1.6em; font-family: 'Kaushan Script', helvetica, cursive; color: #292929;">
+							Conclusion
+						</div>
+                        <div>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </div>
+					</div>
+                    
+                </div>
+            </div>
+
+            <!-- Contact Section -->
+            <!-- ... (contact section commented out as in original) ... -->
+            
+            <!-- Footer -->
+            <footer class="custom-footer">
+                <div class="footer-left" style="display: flex; flex-direction: column; align-items: flex-start;">
+                    <span class="footer-name mt-240" style="font-size: 8em; font-weight: bold; line-height: 1; margin-top: 150px;">
+                        Evana<br>
+                        Ann<br>
+                        Benny
+                    </span>
+                </div>
+                <div class="footer-right">
+                    <div class="footer-links" style="margin-top: 180px;">
+                        <div class="footer-menu">
+                            <div class="footer-title">Menu</div>
+                            <ul>
+                                <li><a href="#blog-section">Blog</a></li>
+                                <li><a href="#books-section">Works</a></li>
+                                <li><a href="#gallery-section">Gallery</a></li>
+                                <li><a href="#hello-section">Hello</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-socials">
+                            <div class="footer-title">Socials</div>
+                            <ul>
+                                <li><a href="#" target="_blank">Facebook</a></li>
+                                <li><a href="#" target="_blank">LinkedIn</a></li>
+                                <li><a href="#" target="_blank">Instagram</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-legal">
+                            <div class="footer-title">Legal</div>
+                            <ul>
+                                <li><a href="#" target="_blank">Privacy Policy</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <style>
+                    .custom-footer {
+                        background: #000;
+                        color: #fff;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: flex-start;
+                        padding: 60px 8vw 40px 8vw;
+                        font-family: 'Poppins', 'Arial', sans-serif;
+                        min-height: 100vh;
+                        width: 100vw;
+                        box-sizing: border-box;
+                        letter-spacing: 0.01em;
+                        position: relative;
+                        left: 50%;
+                        right: 50%;
+                        margin-left: -50vw;
+                        margin-right: -50vw;
+                    }
+                    .footer-left {
+                        flex: 1;
+                        display: flex;
+                        align-items: flex-start;
+                    }
+                    .footer-name {
+                        font-size: 2.8rem;
+                        font-weight: 800;
+                        line-height: 1.1;
+                        letter-spacing: -0.03em;
+                        font-family: 'Poppins', 'Arial Black', Arial, sans-serif;
+                        margin-top: 10px;
+                    }
+                    .footer-right {
+                        flex: 2;
+                        display: flex;
+                        justify-content: flex-end;
+                    }
+                    .footer-links {
+                        display: flex;
+                        gap: 60px;
+                    }
+                    .footer-title {
+                        font-size: 0.95rem;
+                        font-weight: 600;
+                        margin-bottom: 12px;
+                        color: #aaa;
+                        letter-spacing: 0.08em;
+                        text-transform: uppercase;
+                    }
+                    .footer-links ul {
+                        list-style: none;
+                        padding: 0;
+                        margin: 0;
+                    }
+                    .footer-links li {
+                        margin-bottom: 8px;
+                    }
+                    .footer-links a {
+                        color: #fff;
+                        text-decoration: none;
+                        font-size: 1.05rem;
+                        font-weight: 400;
+                        transition: color 0.2s;
+                    }
+                    .footer-links a:hover {
+                        color: #aaa;
+                    }
+                    @media (max-width: 900px) {
+                        .custom-footer {
+                            flex-direction: column;
+                            align-items: flex-start;
+                            padding: 40px 4vw 30px 4vw;
+                            min-height: 100vh;
+                        }
+                        .footer-right {
+                            width: 100%;
+                            margin-top: 30px;
+                        }
+                        .footer-links {
+                            gap: 30px;
+                        }
+                        .footer-name {
+                            font-size: 2rem;
+                        }
+                    }
+                    @media (max-width: 600px) {
+                        .custom-footer {
+                            flex-direction: column;
+                            align-items: flex-start;
+                            padding: 30px 2vw 20px 2vw;
+                            min-height: 100vh;
+                        }
+                        .footer-links {
+                            flex-direction: column;
+                            gap: 18px;
+                        }
+                        .footer-name {
+                            font-size: 1.4rem;
+                        }
+                    }
+                </style>
+            </footer>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+    <script src="js/particles.min.js"></script>
+    <script src="js/typed.min.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+        // Hamburger menu toggle
+        const hamburger = document.getElementById('hamburger-menu');
+        const overlayMenu = document.getElementById('overlay-menu');
+        function openMenu() {
+            overlayMenu.classList.add('open');
+            document.body.classList.add('menu-open');
+        }
+        function closeMenu() {
+            overlayMenu.classList.remove('open');
+            document.body.classList.remove('menu-open');
+        }
+        hamburger.addEventListener('click', function(e) {
+            if (overlayMenu.classList.contains('open')) {
+                closeMenu();
+            } else {
+                openMenu();
+            }
+        });
+        // Also close menu when clicking outside or pressing ESC
+        overlayMenu.addEventListener('click', function(e) {
+            if (e.target === overlayMenu) closeMenu();
+        });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === "Escape") closeMenu();
+        });
+        // Optional: close menu on nav link click (handled inline in <a>)
+    </script>
+
+    <!-- START: New script for header scroll behavior -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const header = document.querySelector('.header');
+            const footer = document.querySelector('.custom-footer');
+
+            // Exit if header or footer don't exist
+            if (!header || !footer) return;
+
+            function handleHeaderScroll() {
+                const headerHeight = header.offsetHeight;
+                const scrollY = window.scrollY;
+
+                // 1. Handle header background/color change after scrolling past hero
+                // Add 'scrolled' class after scrolling 100px.
+                if (scrollY > 100) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+
+                // 2. Handle header disappearing as footer comes into view
+                const footerTop = footer.offsetTop;
+                const scrollBottom = scrollY + window.innerHeight;
+                
+                // Calculate how much the viewport has scrolled into the footer area
+                const overlap = scrollBottom - footerTop;
+
+                if (overlap > 0) {
+                    // Footer is coming into view. Move header up.
+                    // Cap the upward movement at the header's own height.
+                    const transformY = Math.min(overlap, headerHeight);
+                    header.style.transform = `translateY(-${transformY}px)`;
+                } else {
+                    // Footer not yet visible, so header should be in its normal Y position.
+                    header.style.transform = 'translateY(0px)';
+                }
+            }
+
+            // Add the event listener and run once on load to set the initial state
+            window.addEventListener('scroll', handleHeaderScroll, { passive: true });
+            handleHeaderScroll(); 
+        });
+    </script>
+    <!-- END: New script for header scroll behavior -->
+
+</body>
+</html>
